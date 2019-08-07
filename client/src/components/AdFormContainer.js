@@ -4,7 +4,15 @@ import { createAd } from '../actions/ads'
 import AdForm from './AdForm'
 
 class AdFormContainer extends React.Component {
-    state = {}
+    state = {
+        title: '',
+        description: '',
+        url: '',
+        price: '',
+        email: '',
+        phoneNumber: '',
+        added: false
+    }
 
     onChange = (event) => {
         this.setState({
@@ -23,10 +31,9 @@ class AdFormContainer extends React.Component {
             url: '',
             price: '',
             email: '',
-            phoneNumber: ''
+            phoneNumber: '',
+            added: true
         })
-        
-        this.props.history.push('/')
     }
 
     render() {

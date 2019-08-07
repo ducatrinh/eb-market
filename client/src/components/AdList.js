@@ -9,11 +9,11 @@ function AdList(props) {
             <Link to={`./sell`}>Sell</Link>
             {ads && ads.map(ad =>
                 <div key={ad.id}>
-                    <img src={ad.url} alt={ad.title}></img>
+                    <Link to={`./ad/${ad.id}`}><img src={ad.url} alt={ad.title}></img></Link>
                     <h3>
                         <Link to={`./ad/${ad.id}`}>{ad.title}</Link>
                     </h3>
-                    <p>{ad.price}</p>
+                    <p>€{ad.price}</p>
                     <br />
                 </div>
             )}
