@@ -2,6 +2,7 @@
 
 export const ALL_ADS = 'ALL_ADS'
 export const NEW_AD = 'NEW_AD'
+export const AD_FETCHED = 'AD_FETCHED'
 
 // const baseUrl = 'http://localhost:4000'
 
@@ -22,6 +23,13 @@ function allAds(payload) {
 function newAd(payload) {
     return {
         type: NEW_AD,
+        payload
+    }
+}
+
+function adFetched(payload) {
+    return {
+        type: AD_FETCHED,
         payload
     }
 }
@@ -61,4 +69,19 @@ export const createAd = data => (dispatch, getState) => {
 
     dispatch(newAd(data))
     return ads.push(data)
+}
+
+export const loadAd = (id) => (dispatch, getState) => {
+    // const state = getState().ad
+    // if (state && state.id === id) return
+
+    // request(`${baseUrl}/ad/${id}`)
+    //   .then(response => {
+    //     dispatch(adFetched(response.body))
+    //   })
+    //   .catch(console.error)
+
+    const ad = ads.find(ad => ad.id === id)
+    dispatch(adFetched(ad))
+    return ad
 }

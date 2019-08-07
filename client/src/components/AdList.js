@@ -1,15 +1,17 @@
 import React from 'react'
-import AdFormContainer from './AdFormContainer';
+import { Link } from 'react-router-dom'
 
 function AdList(props) {
     const { ads } = props
     
     return (
         <div>
-            {<AdFormContainer />}
+            <Link to={`./sell`}>Add advertisement</Link>
             {ads && ads.map(ad =>
                 <div key={ad.id}>
-                    <h3>{ad.title}</h3>
+                    <h3>
+                        <Link to={`./ad/${ad.id}`}>{ad.title}</Link>
+                    </h3>
                     <p>{ad.price}</p>
                     <br />
                 </div>

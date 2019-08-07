@@ -4,10 +4,7 @@ import { createAd } from '../actions/ads'
 import AdForm from './AdForm'
 
 class AdFormContainer extends React.Component {
-    state = {
-        title: '',
-        price: ''
-    }
+    state = {}
 
     onChange = (event) => {
         this.setState({
@@ -22,8 +19,14 @@ class AdFormContainer extends React.Component {
 
         this.setState({
             title: '',
-            price: ''
+            description: '',
+            url: '',
+            price: '',
+            email: '',
+            phoneNumber: ''
         })
+        
+        this.props.history.push('/')
     }
 
     render() {
@@ -35,4 +38,8 @@ class AdFormContainer extends React.Component {
     }
 }
 
-export default connect(null, { createAd })(AdFormContainer)
+const mapDispatchToProps = {
+    createAd
+}
+
+export default connect(null, mapDispatchToProps)(AdFormContainer)
