@@ -5,7 +5,11 @@ const Advertisement = db.define(
   'ad',
   {
     title: Sequelize.STRING,
-    price: Sequelize.INTEGER
+    description: Sequelize.STRING,
+    price: Sequelize.FLOAT,
+    url: Sequelize.STRING,
+    email: Sequelize.STRING,
+    phoneNumber: Sequelize.STRING
   }
 )
 

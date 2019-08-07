@@ -1,40 +1,33 @@
 const { Router } = require('express')
 const Advertisement = require('./model')
 const router = new Router()
-const auth = require('../auth/middleware')
 
 // Get all ads
-router.get('/ad/', (req, res, next) => {
+router.get('/', (req, res, next) => {
   Advertisement
     .findAll()
-    .then(adResponse => res.json(adResponse))
+    .then(ads => res.json(ads))
     .catch(next)
 })
 
 // Get detail of an ad
-router.get('/ad/:adId', (req, res, next) => {
+router.get('/:adId', (req, res, next) => {
   Advertisement
     .findByPk(req.params.adId)
-    .then(adResponse => {
-      if (!adResponse) {
-        res.status(404).end()
-      } else {
-        res.json(adResponse)
-      }
-    })
+    .then(ad => res.json(ad))
     .catch(next)
 })
 
-// POST ads to sell
-router.post('/ad', (req, res, next) => {
+// POST ad to sell
+router.post('/', (req, res, next) => {
   Advertisement
     .create(req.body)
-    .then(adResponse => res.json(adResponse))
+    .then(ad => res.json(ad))
     .catch(next)
 })
 
 // PUT to edit ads to a certain user
-router.put('/ad/:adId', (req, res, next) => {
+router.put('/:adId', (req, res, next) => {
   Advertisement
     .findByPk(req.params.adId)
     .then(ad => {
@@ -48,7 +41,7 @@ router.put('/ad/:adId', (req, res, next) => {
 })
 
 // Delete an ad
-router.delete('/ad/:adId', (req, res, next) => {
+router.delete('/:adId', (req, res, next) => {
   Advertisement
     .destroy({
       where: {
@@ -65,4 +58,3 @@ router.delete('/ad/:adId', (req, res, next) => {
 })
 
 module.exports = router
-

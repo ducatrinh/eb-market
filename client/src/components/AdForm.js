@@ -15,17 +15,17 @@ export default function AdForm(props) {
             <br />
             <label>
                 Picture Url:
-                <input type="text" name="url" onChange={props.onChange} value={props.values.url} />
+                <input type="url" name="url" onChange={props.onChange} value={props.values.url} />
             </label>
             <br />
             <label>
                 Price:
-                <input type="text" name="price" onChange={props.onChange} value={props.values.price} />
+                <input type="number" name="price" onChange={props.onChange} value={props.values.price} />
             </label>
             <br />
             <label>
                 Email:
-                <input type="text" name="email" onChange={props.onChange} value={props.values.email} />
+                <input type="email" name="email" onChange={props.onChange} value={props.values.email} />
             </label>
             <br />
             <label>
