@@ -19,7 +19,7 @@ router.get('/:adId', (req, res, next) => {
 })
 
 // POST ad to sell
-router.post('/', (req, res, next) => {
+router.post('/ad', (req, res, next) => {
   Advertisement
     .create(req.body)
     .then(ad => res.json(ad))
