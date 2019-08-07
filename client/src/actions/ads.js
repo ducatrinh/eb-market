@@ -1,6 +1,7 @@
 // import request from 'superagent'
 
 export const ALL_ADS = 'ALL_ADS'
+export const NEW_AD = 'NEW_AD'
 
 // const baseUrl = 'http://localhost:4000'
 
@@ -18,6 +19,13 @@ function allAds(payload) {
     }
 }
 
+function newAd(payload) {
+    return {
+        type: NEW_AD,
+        payload
+    }
+}
+
 export const getAds = () => (dispatch, getState) => {
     // const state = getState()
     // const { ads } = state
@@ -31,7 +39,26 @@ export const getAds = () => (dispatch, getState) => {
     //         })
     //         .catch(console.error)
     // }
-    
+
     dispatch(allAds(ads))
     return ads
+}
+
+export const createAd = data => (dispatch, getState) => {
+    // const state = getState()
+    // const { user } = state
+
+    // request
+    //     .post(`${baseUrl}/ad`)
+    //     .set('Authorization', `Bearer ${user}`)
+    //     .send(data)
+    //     .then(response => {
+    //         const action = newAd(response.body)
+
+    //         dispatch(action)
+    //     })
+    //     .catch(console.error)
+
+    dispatch(newAd(data))
+    return ads.push(data)
 }
