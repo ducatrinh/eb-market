@@ -4,7 +4,6 @@ const router = new Router()
 const User = require('./model')
 
 router.post('/user', (req, res, next ) => {
-  console.log('req.body.password:', TEST)
   if(!req.body.password) {
     res.json('Put your password') 
       return "err"
@@ -19,4 +18,17 @@ router.post('/user', (req, res, next ) => {
     .catch(next)
 })
 
+// GET to get ads of a certain user
+router.get('/user/:userId/ads', (req, res, next) => {
+  User
+    .findByPk(req.params.userId)
+    .then(user => {
+      if (!user) {
+        res.status(404).end()
+      } else {
+        res.json(user)
+      }
+    })
+    .catch(next)
+})
 module.exports = router
