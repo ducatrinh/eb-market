@@ -2,23 +2,20 @@ const { Router } = require('express')
 const Advertisement = require('./model')
 const router = new Router()
 
-// Get all ads
-router.get('/', (req, res, next) => {
+router.get('/ad', (req, res, next) => {
   Advertisement
     .findAll()
     .then(ads => res.json(ads))
     .catch(next)
 })
 
-// Get detail of an ad
-router.get('/:adId', (req, res, next) => {
+router.get('/ad/:adId', (req, res, next) => {
   Advertisement
     .findByPk(req.params.adId)
     .then(ad => res.json(ad))
     .catch(next)
 })
 
-// POST ad to sell
 router.post('/ad', (req, res, next) => {
   Advertisement
     .create(req.body)
@@ -26,8 +23,7 @@ router.post('/ad', (req, res, next) => {
     .catch(next)
 })
 
-// PUT to edit ads to a certain user
-router.put('/:adId', (req, res, next) => {
+router.put('/ad/:adId', (req, res, next) => {
   Advertisement
     .findByPk(req.params.adId)
     .then(ad => {
@@ -40,8 +36,7 @@ router.put('/:adId', (req, res, next) => {
     .catch(next)
 })
 
-// Delete an ad
-router.delete('/:adId', (req, res, next) => {
+router.delete('/ad/:adId', (req, res, next) => {
   Advertisement
     .destroy({
       where: {

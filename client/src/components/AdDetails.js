@@ -10,7 +10,7 @@ function AdDetails(props) {
                 <h2>{props.ad.title}</h2>
                 <p>Description: {props.ad.description}</p>
                 <img src={props.ad.url} alt={props.ad.title}></img>
-                <p>Price: {props.ad.price}</p>
+                <p>Price: €{props.ad.price}</p>
                 <p>Email: {props.ad.email}</p>
                 <p>Phone number: {props.ad.phoneNumber}</p>
         </div>

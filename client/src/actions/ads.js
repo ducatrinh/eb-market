@@ -32,7 +32,7 @@ export const getAds = () => (dispatch, getState) => {
     const { ads } = state
 
     if (!ads.length) {
-        request(`${baseUrl}`)
+        request(`${baseUrl}/ad`)
             .then(response => {
                 const action = allAds(response.body)
 
@@ -44,7 +44,7 @@ export const getAds = () => (dispatch, getState) => {
 
 export const createAd = data => (dispatch) => {
     request
-        .post(`${baseUrl}`)
+        .post(`${baseUrl}/ad`)
         .send(data)
         .then(response => {
             const action = newAd(response.body)
@@ -58,7 +58,7 @@ export const loadAd = (id) => (dispatch, getState) => {
     const state = getState().ad
     if (state && state.id === id) return
 
-    request(`${baseUrl}/${id}`)
+    request(`${baseUrl}/ad/${id}`)
       .then(response => {
         dispatch(adFetched(response.body))
       })
