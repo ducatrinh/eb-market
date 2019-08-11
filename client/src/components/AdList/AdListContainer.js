@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getAds } from '../actions/ads'
+import { getAds } from '../../actions/ads'
 import AdList from './AdList'
 import { connect } from 'react-redux'
 
@@ -10,13 +10,19 @@ class AdListContainer extends Component {
 
     render() {
         return (
-            <AdList ads={this.props.ads} />
+            <AdList
+                ads={this.props.ads}
+                user={this.props.user}
+            />
         )
     }
 }
 
 function mapStateToProps(state) {
-    return { ads: state.ads }
+    return {
+        ads: state.ads,
+        user: state.user
+    }
 }
 
 const mapDispatchToProps = { getAds }

@@ -3,6 +3,8 @@ import request from 'superagent'
 export const ALL_ADS = 'ALL_ADS'
 export const NEW_AD = 'NEW_AD'
 export const AD_FETCHED = 'AD_FETCHED'
+export const AD_UPDATE_SUCCESS = 'AD_UPDATE_SUCCESS'
+export const AD_DELETE_SUCCESS = 'AD_DELETE_SUCCESS'
 
 const baseUrl = 'http://localhost:4000'
 
@@ -27,6 +29,20 @@ function adFetched(payload) {
     }
 }
 
+function adUpdateSuccess(payload) {
+    return {
+        type: AD_UPDATE_SUCCESS,
+        payload
+    }
+}
+
+function adDeleteSuccess(payload) {
+    return {
+        type: AD_DELETE_SUCCESS,
+        payload
+    }
+}
+
 export const getAds = () => (dispatch, getState) => {
     const state = getState()
     const { ads } = state
@@ -42,9 +58,13 @@ export const getAds = () => (dispatch, getState) => {
     }
 }
 
-export const createAd = data => (dispatch) => {
+export const createAd = (data) => (dispatch, getState) => {
+    const state = getState()
+    const { user } = state
+
     request
         .post(`${baseUrl}/ad`)
+        .set('Authorization', `Bearer ${user.jwt}`)
         .send(data)
         .then(response => {
             const action = newAd(response.body)
@@ -59,8 +79,35 @@ export const loadAd = (id) => (dispatch, getState) => {
     if (state && state.id === id) return
 
     request(`${baseUrl}/ad/${id}`)
-      .then(response => {
-        dispatch(adFetched(response.body))
-      })
-      .catch(console.error)
+        .then(response => {
+            dispatch(adFetched(response.body))
+        })
+        .catch(console.error)
+}
+
+export const updateAd = (id, data) => (dispatch, getState) => {
+    const state = getState()
+    const { user } = state
+
+    request
+        .put(`${baseUrl}/ad/${id}`)
+        .set('Authorization', `Bearer ${user.jwt}`)
+        .send(data)
+        .then(response => {
+            dispatch(adUpdateSuccess(response.body))
+        })
+        .catch(console.error)
+}
+
+export const deleteAd = (id) => (dispatch, getState) => {
+    const state = getState()
+    const { user } = state
+    
+    request
+        .delete(`${baseUrl}/ad/${id}`)
+        .set('Authorization', `Bearer ${user.jwt}`)
+        .then(_ => {
+            dispatch(adDeleteSuccess(id))
+        })
+        .catch(console.error)
 }

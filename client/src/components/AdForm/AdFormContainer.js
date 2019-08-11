@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { createAd } from '../actions/ads'
+import { createAd } from '../../actions/ads'
 import AdForm from './AdForm'
 
 class AdFormContainer extends React.Component {
@@ -11,7 +11,7 @@ class AdFormContainer extends React.Component {
         price: '',
         email: '',
         phoneNumber: '',
-        added: false
+        added: false,
     }
 
     onChange = (event) => {
@@ -38,6 +38,7 @@ class AdFormContainer extends React.Component {
 
     render() {
         return (<AdForm
+            user={this.props.user}
             onSubmit={this.onSubmit}
             onChange={this.onChange}
             values={this.state}
@@ -45,8 +46,14 @@ class AdFormContainer extends React.Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        user: state.user
+    }
+}
+
 const mapDispatchToProps = {
     createAd
 }
 
-export default connect(null, mapDispatchToProps)(AdFormContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(AdFormContainer)
