@@ -2,7 +2,6 @@ const { Router } = require('express')
 const { toJWT } = require('./jwt')
 const bcrypt = require('bcrypt')
 const auth = require('./middleware')
-
 const User = require('../user/model')
 
 const router = new Router()
@@ -13,9 +12,10 @@ router.post('/login', (req, res) => {
 
   if (!email || !password) {
     res.status(400).send({
-      message: 'Please supply a valid email and password'
+      message: 'Please provide a valid email and password'
     })
-  } else {
+  } 
+  else {
     User
       .findOne({
         where: {
@@ -30,7 +30,10 @@ router.post('/login', (req, res) => {
         }
         if (bcrypt.compareSync(req.body.password, entity.password)) {
           res.send({
-            jwt: toJWT({ userId: entity.id })
+            userId: entity.id,
+            email: entity.email,
+            jwt: toJWT({ userId: entity.id }),
+            role: entity.role
           })
         }
         else {
