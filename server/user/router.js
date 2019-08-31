@@ -4,7 +4,7 @@ const auth = require('../auth/middleware')
 const User = require('./model')
 const router = new Router()
 
-router.post('/user', auth, (req, res, next) => {
+router.post('/user', (req, res, next) => {
   User.findOne({
     where: {
       email: req.body.email
