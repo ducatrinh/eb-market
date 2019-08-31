@@ -1,7 +1,6 @@
 const { Router } = require('express')
 const { toJWT } = require('./jwt')
 const bcrypt = require('bcrypt')
-const auth = require('./middleware')
 const User = require('../user/model')
 
 const router = new Router()
@@ -32,8 +31,7 @@ router.post('/login', (req, res) => {
           res.send({
             userId: entity.id,
             email: entity.email,
-            jwt: toJWT({ userId: entity.id }),
-            role: entity.role
+            jwt: toJWT({ userId: entity.id })
           })
         }
         else {
@@ -49,12 +47,6 @@ router.post('/login', (req, res) => {
         })
       })
   }
-})
-
-router.get('/secret-endpoint', auth, (req, res) => {
-  res.send({
-      message: `Thanks for visiting the secret endpoint ${req.user.email}.`,
-  })
 })
 
 module.exports = router

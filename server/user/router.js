@@ -1,9 +1,10 @@
 const { Router } = require('express')
 const bcrypt = require('bcrypt')
-const router = new Router()
+const auth = require('../auth/middleware')
 const User = require('./model')
+const router = new Router()
 
-router.post('/user', (req, res, next) => {
+router.post('/user', auth, (req, res, next) => {
   User.findOne({
     where: {
       email: req.body.email
@@ -18,21 +19,14 @@ router.post('/user', (req, res, next) => {
       else {
         const user = {
           email: req.body.email,
-          password: bcrypt.hashSync(req.body.password, 10),
-          role: req.body.role === 'admin' ? 'admin' : 'user'
+          password: bcrypt.hashSync(req.body.password, 10)
         }
 
         User
           .create(user)
           .then(userAccount => res.json(userAccount))
-          .catch(next)
       }
     })
-})
-
-router.get('/user', (req, res, next) => {
-  User.findAll()
-    .then(users => res.json(users))
     .catch(next)
 })
 
@@ -43,22 +37,13 @@ router.get('/user/:userId/', (req, res, next) => {
     .catch(next)
 })
 
-router.put('/user/:userId', (req, res, next) => {
-  User.findByPk(req.params.userId)
-    .then(user => user.update(req.body))
-    .then(user => res.json(user))
-    .catch(next)
-})
-
-router.delete('/user/:userId', (req, res, next) => {
+router.delete('/user/:userId', auth, (req, res, next) => {
   User.destroy({ where: { id: req.params.userId } })
     .then(numDeleted => {
       if (numDeleted) {
         return res.status(204).end()
       }
-      else {
-        return res.status(404).end()
-      }
+      return res.status(404).end()
     })
     .catch(next)
 })

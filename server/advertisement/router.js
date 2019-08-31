@@ -1,5 +1,6 @@
 const { Router } = require('express')
 const Advertisement = require('./model')
+const auth = require('../auth/middleware')
 const router = new Router()
 
 router.get('/ad', (req, res, next) => {
@@ -16,27 +17,22 @@ router.get('/ad/:adId', (req, res, next) => {
     .catch(next)
 })
 
-router.post('/ad', (req, res, next) => {
+router.post('/ad', auth, (req, res, next) => {
   Advertisement
     .create(req.body)
     .then(ad => res.json(ad))
     .catch(next)
 })
 
-router.put('/ad/:adId', (req, res, next) => {
+router.put('/ad/:adId', auth, (req, res, next) => {
   Advertisement
     .findByPk(req.params.adId)
-    .then(ad => {
-      if (ad) {
-        return ad.update(req.body)
-          .then(ad => res.json(ad))
-      }
-      return res.status(404).end()
-    })
+    .then(ad => ad.update(req.body))
+    .then(ad => res.json(ad))
     .catch(next)
 })
 
-router.delete('/ad/:adId', (req, res, next) => {
+router.delete('/ad/:adId', auth, (req, res, next) => {
   Advertisement
     .destroy({
       where: {
