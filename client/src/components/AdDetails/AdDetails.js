@@ -26,8 +26,7 @@ function AdDetails(props) {
                     {props.ad.phoneNumber && <p>Phone number: {props.ad.phoneNumber}</p>}
 
                     {props.user.userId === props.ad.userId && <button onClick={props.onEdit}>Edit</button>}
-                    {props.user.role === 'admin' && <button onClick={props.onEdit}>Edit</button>}
-                    {props.user.role === 'admin' && <button onClick={props.onDelete}>Delete</button>}
+                    {props.user.userId === props.ad.userId && <button onClick={props.onEdit}>Delete</button>}
                 </div>}
         </div>
     )

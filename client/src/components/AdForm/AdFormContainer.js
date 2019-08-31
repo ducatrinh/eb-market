@@ -10,8 +10,7 @@ class AdFormContainer extends React.Component {
         url: '',
         price: '',
         email: '',
-        phoneNumber: '',
-        added: false,
+        phoneNumber: ''
     }
 
     onChange = (event) => {
@@ -22,17 +21,14 @@ class AdFormContainer extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault()
-
         this.props.createAd(this.state)
-
         this.setState({
             title: '',
             description: '',
             url: '',
             price: '',
             email: '',
-            phoneNumber: '',
-            added: true
+            phoneNumber: ''
         })
     }
 
