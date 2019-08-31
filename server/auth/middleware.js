@@ -2,12 +2,12 @@ const User = require('../user/model')
 const { toData } = require('./jwt')
 
 function auth(req, res, next) {
-  const auth = req.headers.authorization && req.headers.authorization.split('')
+  const auth = req.headers.authorization && req.headers.authorization.split(' ')
   if (auth && auth[0] === 'Bearer' && auth[1]) {
     try {
       const data = toData(auth[1])
       User
-        .findbyPK(data.userId)
+        .findByPk(data.userId)
         .then(user => {
           if (!user) return next('User does not exist')
 
@@ -23,7 +23,7 @@ function auth(req, res, next) {
     }
   } else {
     res.status(401).send({
-      message: 'Please supply some valid credentials'
+      message: 'Please provide some valid credentials'
     })
   }
 }
