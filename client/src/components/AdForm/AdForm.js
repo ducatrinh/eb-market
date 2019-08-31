@@ -41,7 +41,6 @@ function AdForm(props) {
                         </label>
 
                         {!props.editMode ? <button type="submit">Add</button> : <button type="submit">Update</button>}
-                        {props.values.added && <p>Advertisement created successfully!</p>}
                     </form>
                 </div>}
         </div>)
