@@ -25,6 +25,10 @@ export default function LoginForm(props) {
 
                         <button type="submit">Login</button>
 
+                        {/* Display error message */}
+                        {props.user.url && props.user.url.includes('login') &&
+                            <p>{props.user.message}</p>}
+
                         <p>Don't have an account yet? Sign up to create an account</p>
 
                         <button type="button" onClick={props.onClick}>Sign up</button>

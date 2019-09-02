@@ -19,6 +19,11 @@ export default function SignupForm(props) {
                 </label>
 
                 <button type="submit">Create</button>
+
+                {/* Display error message */}
+                {props.user.url && props.user.url.includes('signup') &&
+                    <p>{props.user.message}</p>}
+
                 {props.user.id && <p>User created successfully!</p>}
             </form>
         </div>)

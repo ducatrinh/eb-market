@@ -2,12 +2,21 @@ import request from 'superagent'
 
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const SIGNUP_ERROR = 'SIGNUP_ERROR'
+export const LOGIN_ERROR = 'LOGIN_ERROR'
 
 const baseUrl = 'http://localhost:4000'
 
 function signupSuccess(payload) {
     return {
         type: SIGNUP_SUCCESS,
+        payload
+    }
+}
+
+function signupError(payload) {
+    return {
+        type: SIGNUP_ERROR,
         payload
     }
 }
@@ -19,20 +28,27 @@ function loginSuccess(payload) {
     }
 }
 
+function loginError(payload) {
+    return {
+        type: LOGIN_ERROR,
+        payload
+    }
+}
+
 export const signup = (email, password) => dispatch => {
     request
         .post(`${baseUrl}/user`)
         .send({ email, password })
         .then(response => {
             const action = signupSuccess(response.body)
-
             dispatch(action)
         })
         .catch(err => {
-            if (err.message === 'Conflict') {
-                alert('This email was already used to register. Please choose another email to sign up.')
-            }
             console.error(err)
+            dispatch(signupError({
+                url: err.response.req.url, 
+                message: err.response.body.message
+            }))
         })
 }
 
@@ -42,13 +58,13 @@ export const login = (email, password) => dispatch => {
         .send({ email, password })
         .then(response => {
             const action = loginSuccess(response.body)
-
             dispatch(action)
         })
         .catch(err => {
-            if (err.message === 'Bad Request') {
-                alert('Your email or password is incorrect!')
-            }
             console.error(err)
+            dispatch(loginError({
+                url: err.response.req.url, 
+                message: err.response.body.message
+            }))
         })
 }
