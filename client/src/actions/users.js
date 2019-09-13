@@ -6,7 +6,7 @@ export const SIGNUP_ERROR = 'SIGNUP_ERROR'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
 
-const baseUrl = 'http://localhost:4000'
+const baseUrl = 'https://eb-market.herokuapp.com/'
 
 function signupSuccess(payload) {
     return {
@@ -38,7 +38,7 @@ function loginError(payload) {
 
 export const signup = (email, password) => dispatch => {
     request
-        .post(`${baseUrl}/user`)
+        .post(`${baseUrl}/api/user`)
         .send({ email, password })
         .then(response => {
             const action = signupSuccess(response.body)
@@ -55,7 +55,7 @@ export const signup = (email, password) => dispatch => {
 
 export const login = (email, password) => dispatch => {
     request
-        .post(`${baseUrl}/login`)
+        .post(`${baseUrl}/api/login`)
         .send({ email, password })
         .then(response => {
             const action = loginSuccess(response.body)
