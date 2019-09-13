@@ -57,13 +57,12 @@ export const getAds = () => (dispatch, getState) => {
     }
 }
 
-export const createAd = (data) => (dispatch, getState) => {
-    const state = getState()
-    const { user } = state
+export const createAd = (data) => (dispatch) => {
+    const jwt = localStorage.getItem('jwt')
 
     request
         .post(`${baseUrl}/ad`)
-        .set('Authorization', `Bearer ${user.jwt}`)
+        .set('Authorization', `Bearer ${jwt}`)
         .send(data)
         .then(response => {
             const action = newAd(response.body)
@@ -83,13 +82,12 @@ export const loadAd = (id) => (dispatch, getState) => {
         .catch(console.error)
 }
 
-export const updateAd = (id, data) => (dispatch, getState) => {
-    const state = getState()
-    const { user } = state
+export const updateAd = (id, data) => (dispatch) => {
+    const jwt = localStorage.getItem('jwt')
 
     request
         .put(`${baseUrl}/ad/${id}`)
-        .set('Authorization', `Bearer ${user.jwt}`)
+        .set('Authorization', `Bearer ${jwt}`)
         .send(data)
         .then(response => {
             dispatch(adUpdateSuccess(response.body))
@@ -97,13 +95,12 @@ export const updateAd = (id, data) => (dispatch, getState) => {
         .catch(console.error)
 }
 
-export const deleteAd = (id) => (dispatch, getState) => {
-    const state = getState()
-    const { user } = state
+export const deleteAd = (id) => (dispatch) => {
+    const jwt = localStorage.getItem('jwt')
     
     request
         .delete(`${baseUrl}/ad/${id}`)
-        .set('Authorization', `Bearer ${user.jwt}`)
+        .set('Authorization', `Bearer ${jwt}`)
         .then(_ => {
             dispatch(adDeleteSuccess(id))
         })

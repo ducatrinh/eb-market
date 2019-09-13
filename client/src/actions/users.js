@@ -60,7 +60,8 @@ export const login = (email, password) => dispatch => {
         .then(response => {
             const action = loginSuccess(response.body)
 
-            // Save email & jwt to local storage to persist the login state
+            // Save login data to local storage to persist the login state
+            localStorage.setItem('userId', action.payload.userId)
             localStorage.setItem('email', action.payload.email)
             localStorage.setItem('jwt', action.payload.jwt)
 
@@ -79,8 +80,8 @@ export const login = (email, password) => dispatch => {
 }
 
 export const logout = () => dispatch => {
-    localStorage.removeItem('email')
-    localStorage.removeItem('jwt')
+    // Remove data from localStorage
+    localStorage.clear()
 
     dispatch({ 
         type: LOGOUT_SUCCESS,

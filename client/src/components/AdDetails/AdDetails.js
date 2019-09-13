@@ -8,7 +8,6 @@ function AdDetails(props) {
     return (
         props.editMode
             ? <AdForm
-                user={props.user}
                 editMode={props.editMode}
                 onSubmit={props.onSubmit}
                 onChange={props.onChange}
@@ -24,8 +23,11 @@ function AdDetails(props) {
                 <p>Email: {props.ad.email}</p>
                 {props.ad.phoneNumber && <p>Phone number: {props.ad.phoneNumber}</p>}
 
-                {props.user.userId === props.ad.userId && <button onClick={props.onEdit}>Edit</button>}
-                {props.user.userId === props.ad.userId && <button onClick={props.onEdit}>Delete</button>}
+                {Number(localStorage.getItem('userId')) === props.ad.userId && 
+                <div>
+                    <button onClick={props.onEdit}>Edit</button>
+                    <button onClick={props.onDelete}>Delete</button>
+                </div>}
             </div>
     )
 }
