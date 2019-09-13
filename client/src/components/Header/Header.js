@@ -5,8 +5,6 @@ import { logout } from '../../actions/users'
 import './Header.css'
 
 function Header(props) {
-    const { user } = props
-
     return (
         <div className="header">
             <Link className="logo" to={`/`}><img src="https://pbs.twimg.com/profile_images/1145603119906271237/pYhpAf0c_400x400.png" alt="Ad List" /></Link>

@@ -33,6 +33,7 @@ class AdFormContainer extends React.Component {
             email: '',
             phoneNumber: ''
         })
+        this.props.history.push('/')
     }
 
     render() {

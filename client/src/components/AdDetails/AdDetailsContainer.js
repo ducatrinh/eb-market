@@ -42,7 +42,6 @@ class AdDetailsContainer extends React.Component {
     render() {
         return (<AdDetails
             ad={this.props.ad}
-            user={this.props.user}
             onEdit={this.onEdit}
             onChange={this.onChange}
             onSubmit={this.onSubmit}
@@ -54,8 +53,7 @@ class AdDetailsContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    ad: state.ad,
-    user: state.user
+    ad: state.ad
 })
 
 const mapDispatchToProps = {
