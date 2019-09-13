@@ -6,7 +6,7 @@ export const SIGNUP_ERROR = 'SIGNUP_ERROR'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
 
-const baseUrl = 'https://eb-market.herokuapp.com/'
+const baseUrl = 'https://eb-market.herokuapp.com'
 
 function signupSuccess(payload) {
     return {

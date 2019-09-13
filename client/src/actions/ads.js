@@ -6,7 +6,7 @@ export const AD_FETCHED = 'AD_FETCHED'
 export const AD_UPDATE_SUCCESS = 'AD_UPDATE_SUCCESS'
 export const AD_DELETE_SUCCESS = 'AD_DELETE_SUCCESS'
 
-const baseUrl = 'https://eb-market.herokuapp.com/'
+const baseUrl = 'https://eb-market.herokuapp.com'
 
 function allAds(payload) {
     return {
