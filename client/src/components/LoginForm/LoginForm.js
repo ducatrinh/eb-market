@@ -5,7 +5,7 @@ import Header from '../Header/Header'
 export default function LoginForm(props) {
     return (
         <div>
-            {props.user.jwt && <Redirect to={'/'}></Redirect>}
+            {localStorage.getItem('jwt') && <Redirect to={'/'}></Redirect>}
             {props.values.signupMode && <Redirect to={'/signup'}></Redirect>}
 
             <div>
