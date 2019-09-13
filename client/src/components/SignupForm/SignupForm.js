@@ -22,7 +22,7 @@ export default function SignupForm(props) {
                 {props.user.url && props.user.url.includes('signup') &&
                     <p>{props.user.message}</p>}
 
-                {props.user.id && <p>User created successfully!</p>}
+                {props.user.id && <p>User created successfully! You can <a href={`/login`}>login</a> now!</p>}
             </form>
         </div>)
 }
