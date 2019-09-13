@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken')
-
-const secret = process.env.JWT_SECRET || 'nsod1osa-!fasq.weqkp,[o^o]-xD'
+const secret = process.env.JWT_SECRET
 
 function toJWT(data) {
   return jwt.sign(data, secret, { expiresIn: '2h' })
