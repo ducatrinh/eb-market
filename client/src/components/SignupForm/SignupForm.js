@@ -19,7 +19,7 @@ export default function SignupForm(props) {
 
                 <button type="submit">Create</button>
 
-                {props.user.url && props.user.url.includes('signup') &&
+                {props.user.url && props.user.url.includes('api/user') &&
                     <p>{props.user.message}</p>}
 
                 {props.user.id && <p>User created successfully! You can <a href={`/login`}>login</a> now!</p>}
