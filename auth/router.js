@@ -5,7 +5,7 @@ const User = require('../user/model')
 
 const router = new Router()
 
-router.post('/login', (req, res) => {
+router.post('/api/login', (req, res) => {
   const email = req.body.email
   const password = req.body.password
 

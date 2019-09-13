@@ -6,7 +6,7 @@ export const AD_FETCHED = 'AD_FETCHED'
 export const AD_UPDATE_SUCCESS = 'AD_UPDATE_SUCCESS'
 export const AD_DELETE_SUCCESS = 'AD_DELETE_SUCCESS'
 
-const baseUrl = 'http://localhost:4000'
+const baseUrl = 'https://eb-market.herokuapp.com/'
 
 function allAds(payload) {
     return {
@@ -48,7 +48,7 @@ export const getAds = () => (dispatch, getState) => {
     const { ads } = state
 
     if (!ads.length) {
-        request(`${baseUrl}/ad`)
+        request(`${baseUrl}/api/ad`)
             .then(response => {
                 const action = allAds(response.body)
                 dispatch(action)
@@ -61,7 +61,7 @@ export const createAd = (data) => (dispatch) => {
     const jwt = localStorage.getItem('jwt')
 
     request
-        .post(`${baseUrl}/ad`)
+        .post(`${baseUrl}/api/ad`)
         .set('Authorization', `Bearer ${jwt}`)
         .send(data)
         .then(response => {
@@ -75,7 +75,7 @@ export const loadAd = (id) => (dispatch, getState) => {
     const state = getState().ad
     if (state && state.id === id) return
 
-    request(`${baseUrl}/ad/${id}`)
+    request(`${baseUrl}/api/ad/${id}`)
         .then(response => {
             dispatch(adFetched(response.body))
         })
@@ -86,7 +86,7 @@ export const updateAd = (id, data) => (dispatch) => {
     const jwt = localStorage.getItem('jwt')
 
     request
-        .put(`${baseUrl}/ad/${id}`)
+        .put(`${baseUrl}/api/ad/${id}`)
         .set('Authorization', `Bearer ${jwt}`)
         .send(data)
         .then(response => {
@@ -99,7 +99,7 @@ export const deleteAd = (id) => (dispatch) => {
     const jwt = localStorage.getItem('jwt')
     
     request
-        .delete(`${baseUrl}/ad/${id}`)
+        .delete(`${baseUrl}/api/ad/${id}`)
         .set('Authorization', `Bearer ${jwt}`)
         .then(_ => {
             dispatch(adDeleteSuccess(id))
