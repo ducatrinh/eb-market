@@ -21,7 +21,10 @@ class AdFormContainer extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault()
-        this.props.createAd(this.state)
+        this.props.createAd({
+            ...this.state,
+            userId: this.props.user.userId
+        })
         this.setState({
             title: '',
             description: '',

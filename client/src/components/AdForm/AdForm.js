@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+import Header from '../Header/Header'
 
 function AdForm(props) {
     return (
@@ -8,7 +9,7 @@ function AdForm(props) {
 
             {props.user.jwt &&
                 <div>
-                    <Link to={`/`}>Ad's List</Link>
+                    <Header />
                     <form onSubmit={props.onSubmit}>
                         <label>
                             Title:

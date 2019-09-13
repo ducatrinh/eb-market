@@ -51,7 +51,6 @@ export const getAds = () => (dispatch, getState) => {
         request(`${baseUrl}/ad`)
             .then(response => {
                 const action = allAds(response.body)
-
                 dispatch(action)
             })
             .catch(console.error)
@@ -68,7 +67,6 @@ export const createAd = (data) => (dispatch, getState) => {
         .send(data)
         .then(response => {
             const action = newAd(response.body)
-
             dispatch(action)
         })
         .catch(console.error)

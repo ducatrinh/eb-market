@@ -1,11 +1,10 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+import Header from '../Header/Header'
 
 export default function SignupForm(props) {
     return (
         <div>
-            <Link to={`/`}>Ad's list</Link>
-            <Link to={`/login`}>Login</Link>
+            <Header />
             <form onSubmit={props.onSubmit}>
                 <h4>Create your account</h4>
                 <label>
@@ -19,6 +18,10 @@ export default function SignupForm(props) {
                 </label>
 
                 <button type="submit">Create</button>
+
+                {props.user.url && props.user.url.includes('signup') &&
+                    <p>{props.user.message}</p>}
+
                 {props.user.id && <p>User created successfully!</p>}
             </form>
         </div>)
