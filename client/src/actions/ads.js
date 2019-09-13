@@ -48,7 +48,7 @@ export const getAds = () => (dispatch, getState) => {
     const { ads } = state
 
     if (!ads.length) {
-        request(`${baseUrl}/api/ad`)
+        request(`${baseUrl}/api/ebad`)
             .then(response => {
                 const action = allAds(response.body)
                 dispatch(action)
@@ -61,7 +61,7 @@ export const createAd = (data) => (dispatch) => {
     const jwt = localStorage.getItem('jwt')
 
     request
-        .post(`${baseUrl}/api/ad`)
+        .post(`${baseUrl}/api/ebad`)
         .set('Authorization', `Bearer ${jwt}`)
         .send(data)
         .then(response => {
@@ -75,7 +75,7 @@ export const loadAd = (id) => (dispatch, getState) => {
     const state = getState().ad
     if (state && state.id === id) return
 
-    request(`${baseUrl}/api/ad/${id}`)
+    request(`${baseUrl}/api/ebad/${id}`)
         .then(response => {
             dispatch(adFetched(response.body))
         })
@@ -86,7 +86,7 @@ export const updateAd = (id, data) => (dispatch) => {
     const jwt = localStorage.getItem('jwt')
 
     request
-        .put(`${baseUrl}/api/ad/${id}`)
+        .put(`${baseUrl}/api/ebad/${id}`)
         .set('Authorization', `Bearer ${jwt}`)
         .send(data)
         .then(response => {
@@ -99,7 +99,7 @@ export const deleteAd = (id) => (dispatch) => {
     const jwt = localStorage.getItem('jwt')
     
     request
-        .delete(`${baseUrl}/api/ad/${id}`)
+        .delete(`${baseUrl}/api/ebad/${id}`)
         .set('Authorization', `Bearer ${jwt}`)
         .then(_ => {
             dispatch(adDeleteSuccess(id))
