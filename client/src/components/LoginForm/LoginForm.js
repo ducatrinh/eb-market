@@ -1,38 +1,36 @@
 import * as React from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+import Header from '../Header/Header'
 
 export default function LoginForm(props) {
     return (
         <div>
             {props.user.jwt && <Redirect to={'/'}></Redirect>}
-
             {props.values.signupMode && <Redirect to={'/signup'}></Redirect>}
 
-            {!props.values.signupMode &&
-                <div>
-                    <Link to={`/`}>Ad's list</Link>
-                    <form onSubmit={props.onSubmit}>
-                        <h4>Login your account to begin selling items</h4>
-                        <label>
-                            Email:
+            <div>
+                <Header />
+                <form onSubmit={props.onSubmit}>
+                    <h4>Login your account to begin selling items</h4>
+                    <label>
+                        Email:
                         <input type="email" required name="email" onChange={props.onChange} value={props.values.email} />
-                        </label>
+                    </label>
 
-                        <label>
-                            Password:
+                    <label>
+                        Password:
                         <input type="password" required name="password" minLength="6" onChange={props.onChange} value={props.values.password} />
-                        </label>
+                    </label>
 
-                        <button type="submit">Login</button>
+                    <button type="submit">Login</button>
 
-                        {/* Display error message */}
-                        {props.user.url && props.user.url.includes('login') &&
-                            <p>{props.user.message}</p>}
+                    {props.user.url && props.user.url.includes('login') &&
+                        <p>{props.user.message}</p>}
 
-                        <p>Don't have an account yet? Sign up to create an account</p>
+                    <p>Don't have an account yet? Sign up to create an account</p>
 
-                        <button type="button" onClick={props.onClick}>Sign up</button>
-                    </form>
-                </div>}
+                    <button type="button" onClick={props.onClick}>Sign up</button>
+                </form>
+            </div>
         </div>)
 }

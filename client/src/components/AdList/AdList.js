@@ -1,14 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Header from '../Header/Header'
 
 function AdList(props) {
-    const { ads, user } = props
+    const { ads } = props
     
     return (
         <div>
-            <Link to={`/sell`}>Sell</Link>
-            {!user.jwt && <Link to={`/login`}>Login</Link>}
-            {user.jwt && <h4>Welcome {user.email}</h4>}
+            <Header />
             {ads && ads.map(ad =>
                 <div key={ad.id}>
                     <Link to={`/ad/${ad.id}`}><img src={ad.url} alt={ad.title}></img></Link>
