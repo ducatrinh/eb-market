@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, SIGNUP_SUCCESS, LOGIN_ERROR, SIGNUP_ERROR } from '../actions/users'
+import { LOGIN_SUCCESS, SIGNUP_SUCCESS, LOGIN_ERROR, SIGNUP_ERROR, LOGOUT_SUCCESS } from '../actions/users'
 
 export default function (state = {}, action = {}) {
     switch (action.type) {
@@ -9,6 +9,8 @@ export default function (state = {}, action = {}) {
         case LOGIN_ERROR:
             return action.payload
         case SIGNUP_ERROR:
+            return action.payload
+        case LOGOUT_SUCCESS: 
             return action.payload
         default:
             return state
