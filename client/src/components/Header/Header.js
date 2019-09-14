@@ -16,7 +16,7 @@ function Header(props) {
                 </div>
                 : <div className="login-logout-signup-header">
                     <span>Welcome {localStorage.getItem('email')}</span>
-                    <Link to={`/`} onClick={props.logout}>Logout</Link>
+                    <a href={`/`} onClick={props.logout}>Logout</a>
                 </div>
             }
         </div>

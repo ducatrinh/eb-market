@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 import Header from '../Header/Header'
 
 export default function SignupForm(props) {
@@ -22,7 +23,7 @@ export default function SignupForm(props) {
                 {props.user.url && props.user.url.includes('api/user') &&
                     <p>{props.user.message}</p>}
 
-                {props.user.id && <p>User created successfully! You can <a href={`/login`}>login</a> now!</p>}
+                {props.user.id && <p>User created successfully! You can <Link to={`/login`}>login</Link> now!</p>}
             </form>
         </div>)
 }
