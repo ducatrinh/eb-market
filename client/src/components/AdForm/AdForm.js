@@ -44,9 +44,9 @@ function AdForm(props) {
                         <FormControl fullWidth>
                             <InputLabel htmlFor="quantity">Image Url</InputLabel>
                             <Input
-                                id="imageUrl"
+                                id="url"
                                 type="text"
-                                name="imageUrl"
+                                name="url"
                                 value={props.values.url}
                                 onChange={props.onChange}
                             />
@@ -83,9 +83,9 @@ function AdForm(props) {
                         <FormControl>
                             <InputLabel htmlFor="description">Phone</InputLabel>
                             <Input
-                                id="phone"
+                                id="phoneNumber"
                                 type="number"
-                                name="phone"
+                                name="phoneNumber"
                                 value={props.values.phoneNumber}
                                 onChange={props.onChange}
                             />
