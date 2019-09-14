@@ -34,7 +34,7 @@ function Header(props) {
                             </Grid>
                         </div>
                         : <div className="login-logout-signup-header">
-                            <span>Welcome {localStorage.getItem('email')}</span>
+                            <span>Welcome {localStorage.getItem('name')}</span>
                             <Link to="/">
                                 <Button variant="outlined" className="logout-btn" onClick={props.logout}>Logout</Button>
                             </Link>

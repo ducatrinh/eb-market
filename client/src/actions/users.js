@@ -58,6 +58,7 @@ export const login = (email, password) => dispatch => {
         .post(`${baseUrl}/api/login`)
         .send({ email, password })
         .then(response => {
+            console.log('NAME', response.body)
             const action = loginSuccess(response.body)
 
             // Save login data to local storage to persist the login state
@@ -73,10 +74,10 @@ export const login = (email, password) => dispatch => {
         })
         .catch(err => {
             console.error(err)
-            // dispatch(loginError({
-            //     url: err.response.req.url, 
-            //     message: err.response.body.message
-            // }))
+            dispatch(loginError({
+                url: err.response.req.url, 
+                message: err.response.body.message
+            }))
         })
 }
 
