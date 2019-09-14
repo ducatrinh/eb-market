@@ -1,11 +1,9 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import Header from '../Header/Header'
 
 export default function SignupForm(props) {
     return (
         <div>
-            <Header />
             <form onSubmit={props.onSubmit}>
                 <h4>Create your account</h4>
                 <label>

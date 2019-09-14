@@ -1,6 +1,5 @@
 import * as React from 'react'
 import AdForm from '../AdForm/AdForm'
-import Header from '../Header/Header'
 
 function AdDetails(props) {
     if (!props.ad) return 'Loading ad data...'
@@ -15,7 +14,6 @@ function AdDetails(props) {
             />
 
             : <div>
-                <Header />
                 <h2>{props.ad.title}</h2>
                 <p>Description: {props.ad.description}</p>
                 <img src={props.ad.url} alt={props.ad.title}></img>

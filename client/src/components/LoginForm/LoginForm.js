@@ -1,36 +1,64 @@
 import * as React from 'react'
-import { Redirect } from 'react-router-dom'
-import Header from '../Header/Header'
+import { Redirect, Link } from 'react-router-dom'
+import Grid from '@material-ui/core/Grid'
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import Button from '@material-ui/core/Button';
 
 export default function LoginForm(props) {
     return (
         <div>
             {localStorage.getItem('jwt') && <Redirect to={'/'}></Redirect>}
             {props.values.signupMode && <Redirect to={'/signup'}></Redirect>}
+            <form onSubmit={props.onSubmit}>
+                <Grid container alignItems="center" justify="center" direction="column" className="login-container">
+                    <Grid item xs={12}>
+                        <h4>Login your account to begin selling items</h4>
+                    </Grid>
 
-            <div>
-                <Header />
-                <form onSubmit={props.onSubmit}>
-                    <h4>Login your account to begin selling items</h4>
-                    <label>
-                        Email:
-                        <input type="email" required name="email" onChange={props.onChange} value={props.values.email} />
-                    </label>
+                    <Grid item xs={12}> 
+                        <FormControl fullWidth>
+                            <InputLabel htmlFor="email">Email</InputLabel>
+                            <Input
+                                id="email"
+                                type="text"
+                                name="email"
+                                value={props.values.email}
+                                onChange={props.onChange}
+                            />
+                        </FormControl>
+                    </Grid>
 
-                    <label>
-                        Password:
-                        <input type="password" required name="password" minLength="6" onChange={props.onChange} value={props.values.password} />
-                    </label>
+                    <Grid item xs={12}>
+                        <FormControl fullWidth>
+                            <InputLabel htmlFor="password">Password</InputLabel>
+                            <Input
+                                id="password"
+                                type="password"
+                                name="password"
+                                value={props.values.password}
+                                onChange={props.onChange}
+                            />
+                        </FormControl>
+                    </Grid>
 
-                    <button type="submit">Login</button>
+                    <Grid item xs={12}>
+                        <Button type="submit" variant="contained" color="primary">
+                            Login
+                        </Button>
+                    </Grid>
 
-                    {props.user.url && props.user.url.includes('login') &&
-                        <p>{props.user.message}</p>}
+                    <Grid item xs={12}>
+                        {props.user.url && props.user.url.includes('login') &&
+                            <p>{props.user.message}</p>}
+                    </Grid>
 
-                    <p>Don't have an account yet? Sign up to create an account</p>
-
-                    <button type="button" onClick={props.onClick}>Sign up</button>
-                </form>
-            </div>
-        </div>)
+                    <Grid item xs={12}>
+                        <p>Don't have an account yet? <Link to="signup">Signup here</Link></p>
+                    </Grid>
+                </Grid>
+            </form>
+        </div>
+    )
 }
