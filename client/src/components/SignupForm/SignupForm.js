@@ -7,6 +7,11 @@ export default function SignupForm(props) {
             <form onSubmit={props.onSubmit}>
                 <h4>Create your account</h4>
                 <label>
+                    Name:
+                <input type="name" required name="name" onChange={props.onChange} value={props.values.name} />
+                </label>
+
+                <label>
                     Email:
                 <input type="email" required name="email" onChange={props.onChange} value={props.values.email} />
                 </label>

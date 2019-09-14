@@ -5,13 +5,14 @@ import { signup } from '../../actions/users'
 
 class SignupFormContainer extends React.Component {
     state = {
+        name: '',
         email: '',
         password: ''
     }
 
     onSubmit = (event) => {
         event.preventDefault()
-        this.props.signup(this.state.email, this.state.password)
+        this.props.signup(this.state.name, this.state.email, this.state.password)
     }
 
     onChange = (event) => {
