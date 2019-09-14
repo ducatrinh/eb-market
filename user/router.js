@@ -18,6 +18,7 @@ router.post('/api/user', (req, res, next) => {
       }
       else {
         const user = {
+          name: req.body.name,
           email: req.body.email,
           password: bcrypt.hashSync(req.body.password, 10)
         }
