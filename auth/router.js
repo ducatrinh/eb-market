@@ -30,6 +30,7 @@ router.post('/api/login', (req, res) => {
         if (bcrypt.compareSync(req.body.password, entity.password)) {
           res.send({
             userId: entity.id,
+            name: entity.name,
             email: entity.email,
             jwt: toJWT({ userId: entity.id })
           })
