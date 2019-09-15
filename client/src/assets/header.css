@@ -13,5 +13,18 @@ header {
 
 .user-info {
   color: black !important;
-  margin-right: 10px;
+  /* margin-right: 10px !important; */
+}
+
+.login-btn {
+  margin-left: 5px !important
+}
+
+.signup-btn {
+  margin-left: 5px !important
+}
+.sell-btn {
+  margin-left: 5px !important;
+  color: #80ad1c !important;
+  border-color: #80ad1c !important
 }

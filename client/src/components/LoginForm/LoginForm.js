@@ -1,23 +1,43 @@
 import * as React from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
-import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 export default function LoginForm(props) {
     return (
         <div>
             {localStorage.getItem('jwt') && <Redirect to={'/'}></Redirect>}
             {props.values.signupMode && <Redirect to={'/signup'}></Redirect>}
-            <form onSubmit={props.onSubmit}>
+
+            <form onSubmit={props.onSubmit} noValidate autoComplete="off">
                 <Grid container alignItems="center" justify="center" direction="column" className="login-container">
                     <Grid item xs={12}>
-                        <h4>Login your account to begin selling items</h4>
+                        <h4>Start selling by logging in</h4>
                     </Grid>
 
-                    <Grid item xs={12}> 
+                    <TextField
+                        id="outlined-email-input"
+                        label="Email"
+                        type="email"
+                        name="email"
+                        autoComplete="email"
+                        margin="normal"
+                        variant="outlined"
+                        value={props.values.email}
+                        onChange={props.onChange}
+                    />
+                    <TextField
+                        id="outlined-password-input"
+                        label="Password"
+                        type="password"
+                        name="password"
+                        margin="normal"
+                        variant="outlined"
+                        value={props.values.password}
+                        onChange={props.onChange}
+                    />
+                    {/* <Grid item xs={12}> 
                         <FormControl fullWidth>
                             <InputLabel htmlFor="email">Email</InputLabel>
                             <Input
@@ -41,7 +61,7 @@ export default function LoginForm(props) {
                                 onChange={props.onChange}
                             />
                         </FormControl>
-                    </Grid>
+                    </Grid> */}
 
                     <Grid item xs={12}>
                         <Button type="submit" variant="contained" color="primary">

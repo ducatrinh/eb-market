@@ -16,23 +16,19 @@ function Header(props) {
             <AppBar position="static">
                 <Toolbar>
                     <Grid justify="space-between" container spacing={24}>
-                        
+
                         <Grid item>
                             <Link to={`/`}>
                                 <img alt="ebay logo" className="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/EBay_logo.png/800px-EBay_logo.png" />
-                            </Link>
-                        </Grid>
-                        
-
-                        <Grid item>
-                            <Link to="/sell">
-                                <Button className="sell-btn">Sell</Button>
                             </Link>
                         </Grid>
 
                         {!localStorage.getItem('jwt')
                             ? <div className="login-logout-signup-header">
                                 <Grid item>
+                                    <Link to="/sell">
+                                        <Button variant="outlined" className="sell-btn">Sell</Button>
+                                    </Link>
                                     <Link to="/login">
                                         <Button variant="outlined" className="login-btn">Login</Button>
                                     </Link>
@@ -53,13 +49,13 @@ function Header(props) {
                 </Toolbar>
             </AppBar>
         </div>
-            )
-        }
-        
+    )
+}
+
 function mapStateToProps(state) {
     return {
-                user: state.user
-        }
+        user: state.user
     }
-    
-export default connect(mapStateToProps, {logout})(Header)
+}
+
+export default connect(mapStateToProps, { logout })(Header)
