@@ -6,8 +6,8 @@ import AdForm from './AdForm'
 class AdFormContainer extends React.Component {
     state = {
         title: '',
-        description: '',
         url: '',
+        description: '',
         price: '',
         email: '',
         phoneNumber: ''
@@ -27,8 +27,8 @@ class AdFormContainer extends React.Component {
         })
         this.setState({
             title: '',
-            description: '',
             url: '',
+            description: '',
             price: '',
             email: '',
             phoneNumber: ''
