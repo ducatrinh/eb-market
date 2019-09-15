@@ -1,29 +1,66 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import Header from '../Header/Header'
+import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import '../../assets/boxes.css'
 
 export default function SignupForm(props) {
     return (
         <div>
-            <Header />
             <form onSubmit={props.onSubmit}>
-                <h4>Create your account</h4>
-                <label>
-                    Email:
-                <input type="email" required name="email" onChange={props.onChange} value={props.values.email} />
-                </label>
+                <Grid container alignItems="center" justify="center" direction="column" className="login-container">
+                    <Grid item>
+                        <h4>Create your account</h4>
+                    </Grid>
 
-                <label>
-                    Password:
-                <input type="password" required name="password" minLength="6" onChange={props.onChange} value={props.values.password} />
-                </label>
+                    <TextField
+                        id="outlined-name"
+                        label="Name"
+                        type="name"
+                        name="name"
+                        margin="normal"
+                        variant="outlined"
+                        value={props.values.name}
+                        onChange={props.onChange}
+                    />
 
-                <button type="submit">Create</button>
+                    <TextField
+                        id="outlined-email-input"
+                        label="Email"
+                        type="email"
+                        name="email"
+                        margin="normal"
+                        variant="outlined"
+                        value={props.values.email}
+                        onChange={props.onChange}
+                    />
+                    <TextField
+                        id="outlined-password-input"
+                        label="Password"
+                        type="password"
+                        name="password"
+                        margin="normal"
+                        variant="outlined"
+                        value={props.values.password}
+                        onChange={props.onChange}
+                    />
 
-                {props.user.url && props.user.url.includes('api/user') &&
-                    <p>{props.user.message}</p>}
+                    <Grid item xs={12}>
+                        <Button type="submit" variant="contained" color="primary">
+                            Create
+                    </Button>
+                    </Grid>
 
-                {props.user.id && <p>User created successfully! You can <Link to={`/login`}>login</Link> now!</p>}
+                    <Grid item>
+                        {props.user.url && props.user.url.includes('api/user') &&
+                            <p>{props.user.message}</p>}
+                    </Grid>
+
+                    <Grid item>
+                        {props.user.id && <p>User created successfully! You can <Link to="login">login here</Link></p>}
+                    </Grid>
+                </Grid>
             </form>
-        </div>)
+        </div >)
 }

@@ -1,23 +1,55 @@
 import React from 'react'
+import '../../assets/styles.css'
 import { Link } from 'react-router-dom'
-import Header from '../Header/Header'
+import { CardMedia, Grid, Typography, Card, CardActionArea, CardContent } from '@material-ui/core'
 
 function AdList(props) {
     const { ads } = props
-    
+
     return (
         <div>
-            <Header />
-            {ads && ads.map(ad =>
-                <div key={ad.id}>
-                    <Link to={`/ad/${ad.id}`}><img src={ad.url} alt={ad.title}></img></Link>
-                    <h3>
-                        <Link to={`/ad/${ad.id}`}>{ad.title}</Link>
-                    </h3>
-                    <p>€{ad.price}</p>
-                    <br />
-                </div>
-            )}
+            <Grid container justify="center" direction="column" className="search-container">
+                <Grid item xs={12} md={6} sm={3} lg={4}>
+                    <Typography variant="h2" className="promotion">
+                        AUTUMN 
+                        <br/>
+                        SALE
+                        <br/>
+                        UP TO
+                        <br/>
+                        25% OFF
+                    </Typography>  
+                </Grid>
+
+            </Grid>
+
+            <Grid container alignItems="center" justify="center" direction="row" spacing={2} className="ad-list">
+                {ads && ads.map(ad =>
+                    <Grid key={ad.id} item xs={12} md={4} sm={6} lg={4}>
+                        <Link to={`/ad/${ad.id}`}>
+                            <Card>
+                                <CardActionArea>
+                                    <CardMedia
+                                        component="img"
+                                        alt={ad.title}
+                                        height="140"
+                                        image={ad.url}
+                                        title={ad.title}
+                                    />
+                                    <CardContent>
+                                        <h3>
+                                            <Link to={`/ad/${ad.id}`}>{ad.title}</Link>
+                                        </h3>
+                                        <p>€{ad.price}</p>
+                                    </CardContent>
+                                </CardActionArea>
+
+                            </Card>
+                        </Link>
+
+                    </Grid>
+                )}
+            </Grid>
         </div>
     )
 }

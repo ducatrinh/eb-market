@@ -7,12 +7,16 @@ import AdFormContainer from './components/AdForm/AdFormContainer'
 import AdDetailsContainer from './components/AdDetails/AdDetailsContainer'
 import SignupFormContainer from './components/SignupForm/SignupFormContainer'
 import LoginFormContainer from './components/LoginForm/LoginFormContainer'
+import Header from '../src/components/Header/Header'
+import './App.css'
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <div className="App">
+          <Header />
+
           <Route path="/" exact component={AdListContainer} />
           <Route path="/ad/:id" component={AdDetailsContainer} />
           <Route path="/sell" exact component={AdFormContainer} />
