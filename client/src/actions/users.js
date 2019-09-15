@@ -36,10 +36,10 @@ function loginError(payload) {
     }
 }
 
-export const signup = (email, password) => dispatch => {
+export const signup = (name, email, password) => dispatch => {
     request
         .post(`${baseUrl}/api/user`)
-        .send({ email, password })
+        .send({ name, email, password })
         .then(response => {
             const action = signupSuccess(response.body)
             dispatch(action)
@@ -58,10 +58,12 @@ export const login = (email, password) => dispatch => {
         .post(`${baseUrl}/api/login`)
         .send({ email, password })
         .then(response => {
+            console.log('NAME', response.body)
             const action = loginSuccess(response.body)
 
             // Save login data to local storage to persist the login state
             localStorage.setItem('userId', action.payload.userId)
+            localStorage.setItem('name', action.payload.name)
             localStorage.setItem('email', action.payload.email)
             localStorage.setItem('jwt', action.payload.jwt)
 
