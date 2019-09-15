@@ -1,4 +1,5 @@
 import * as React from 'react'
+import '../../assets/styles.css'
 import { Redirect } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -28,6 +29,17 @@ function AdForm(props) {
 
                     <TextField
                         className="box"
+                        label="Image Url"
+                        margin="dense"
+                        variant="outlined"
+                        type="text"
+                        name="url"
+                        value={props.values.url}
+                        onChange={props.onChange}
+                    />
+
+                    <TextField
+                        className="box"
                         label="Description"
                         margin="dense"
                         variant="outlined"
@@ -37,16 +49,6 @@ function AdForm(props) {
                         onChange={props.onChange}
                     />
 
-                    <TextField
-                        className="box"
-                        label="Image Url"
-                        margin="dense"
-                        variant="outlined"
-                        type="text"
-                        name="url"
-                        value={props.values.url}
-                        onChange={props.onChange}
-                    />
 
                     <TextField
                         className="box"

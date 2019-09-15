@@ -8,6 +8,7 @@ import AdDetailsContainer from './components/AdDetails/AdDetailsContainer'
 import SignupFormContainer from './components/SignupForm/SignupFormContainer'
 import LoginFormContainer from './components/LoginForm/LoginFormContainer'
 import Header from '../src/components/Header/Header'
+import './App.css'
 
 class App extends Component {
   render() {
