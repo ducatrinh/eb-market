@@ -5,6 +5,7 @@ export const NEW_AD = 'NEW_AD'
 export const AD_FETCHED = 'AD_FETCHED'
 export const AD_UPDATE_SUCCESS = 'AD_UPDATE_SUCCESS'
 export const AD_DELETE_SUCCESS = 'AD_DELETE_SUCCESS'
+export const OFFER_MADE = 'OFFER_MADE'
 
 const baseUrl = 'https://eb-market.herokuapp.com'
 
@@ -40,6 +41,12 @@ function adDeleteSuccess(payload) {
     return {
         type: AD_DELETE_SUCCESS,
         payload
+    }
+}
+
+function offerMade() {
+    return {
+        type: OFFER_MADE
     }
 }
 
@@ -97,7 +104,7 @@ export const updateAd = (id, data) => (dispatch) => {
 
 export const deleteAd = (id) => (dispatch) => {
     const jwt = localStorage.getItem('jwt')
-    
+
     request
         .delete(`${baseUrl}/api/ebad/${id}`)
         .set('Authorization', `Bearer ${jwt}`)
@@ -105,4 +112,10 @@ export const deleteAd = (id) => (dispatch) => {
             dispatch(adDeleteSuccess(id))
         })
         .catch(console.error)
+}
+
+export const makeOffer = () => dispatch => {
+    localStorage.setItem('offerMade', true)
+
+    dispatch(offerMade())
 }

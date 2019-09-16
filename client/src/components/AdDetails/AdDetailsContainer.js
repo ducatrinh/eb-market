@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import AdDetails from './AdDetails'
-import { loadAd, updateAd, deleteAd } from '../../actions/ads'
+import { loadAd, updateAd, deleteAd, makeOffer } from '../../actions/ads'
 
 class AdDetailsContainer extends React.Component {
     state = { editMode: false }
@@ -39,6 +39,11 @@ class AdDetailsContainer extends React.Component {
         this.props.updateAd(this.props.ad.id, this.state.formValues)
     }
 
+    handleMakeOfferSubmit = (event) => {
+        event.preventDefault()
+        this.props.makeOffer()
+    }
+
     render() {
         return (<AdDetails
             ad={this.props.ad}
@@ -48,6 +53,7 @@ class AdDetailsContainer extends React.Component {
             onDelete={this.onDelete}
             editMode={this.state.editMode}
             formValues={this.state.formValues}
+            handleMakeOfferSubmit={this.handleMakeOfferSubmit}
         />)
     }
 }
@@ -57,7 +63,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-    loadAd, updateAd, deleteAd
+    loadAd, updateAd, deleteAd, makeOffer
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdDetailsContainer)

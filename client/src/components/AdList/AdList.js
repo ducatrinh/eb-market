@@ -11,14 +11,14 @@ function AdList(props) {
             <Grid container justify="center" direction="column" className="search-container">
                 <Grid item xs={12} md={6} sm={3} lg={4}>
                     <Typography variant="h2" className="promotion">
-                        AUTUMN 
-                        <br/>
+                        AUTUMN
+                        <br />
                         SALE
-                        <br/>
+                        <br />
                         UP TO
-                        <br/>
+                        <br />
                         25% OFF
-                    </Typography>  
+                    </Typography>
                 </Grid>
 
             </Grid>
@@ -37,9 +37,7 @@ function AdList(props) {
                                         title={ad.title}
                                     />
                                     <CardContent>
-                                        <h3>
-                                            <Link to={`/ad/${ad.id}`}>{ad.title}</Link>
-                                        </h3>
+                                        <h3>{ad.title}</h3>
                                         <p>€{ad.price}</p>
                                     </CardContent>
                                 </CardActionArea>

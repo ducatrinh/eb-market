@@ -13,7 +13,7 @@ function Header(props) {
         <div className="header" >
             <AppBar position="fixed">
                 <Toolbar>
-                    <Grid justify="space-between" container spacing={24}>
+                    <Grid justify="space-between" container>
 
                         <Grid item>
                             <Link to={`/`}>
@@ -37,7 +37,7 @@ function Header(props) {
                             </div>
 
                             : <Grid item className="login-logout-signup-header">
-                                <span className="user-info">Welcome {localStorage.getItem('name')}</span>
+                                <span className="user-info">Welcome, {localStorage.getItem('name')}!</span>
                                 <Link to="/sell">
                                     <Button variant="outlined" className="sell-btn">Sell</Button>
                                 </Link>
