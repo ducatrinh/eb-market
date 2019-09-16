@@ -1,20 +1,19 @@
 import * as React from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
 import '../../assets/styles.css'
 
 export default function LoginForm(props) {
     return (
         <div>
             {localStorage.getItem('jwt') && <Redirect to={'/'}></Redirect>}
-            {props.values.signupMode && <Redirect to={'/signup'}></Redirect>}
 
             <form onSubmit={props.onSubmit} noValidate autoComplete="off">
                 <Grid container alignItems="center" justify="center" direction="column" className="login-container">
                     <Grid item xs={12}>
-                        <h4>Start selling by logging in</h4>
+                        <h4>Start selling/making an offer by logging in</h4>
                     </Grid>
 
                     <TextField
@@ -28,6 +27,7 @@ export default function LoginForm(props) {
                         value={props.values.email}
                         onChange={props.onChange}
                     />
+
                     <TextField
                         id="outlined-password-input"
                         label="Password"
@@ -40,14 +40,14 @@ export default function LoginForm(props) {
                     />
 
                     <Grid item xs={12}>
-                        <Button type="submit" variant="contained" color="primary">
-                            Login
-                        </Button>
+                        {props.user.url && props.user.url.includes('login') &&
+                            <p className="error-msg">{props.user.message}</p>}
                     </Grid>
 
                     <Grid item xs={12}>
-                        {props.user.url && props.user.url.includes('login') &&
-                            <p>{props.user.message}</p>}
+                        <Button type="submit" variant="contained" color="primary">
+                            Login
+                        </Button>
                     </Grid>
 
                     <Grid item xs={12}>

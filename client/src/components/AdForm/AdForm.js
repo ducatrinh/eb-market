@@ -1,16 +1,16 @@
 import * as React from 'react'
 import '../../assets/styles.css'
 import { Redirect } from 'react-router-dom'
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
+import '../../assets/boxes.css'
 
 function AdForm(props) {
     return (
         !localStorage.getItem('jwt')
             ? <Redirect to={'/login'}></Redirect>
-            :
-            <form onSubmit={props.onSubmit}>
+            : <form onSubmit={props.onSubmit}>
                 <Grid container alignItems="center" justify="center" direction="column" className="create-event-container">
                     <Grid item xs={12}>
                         <h3>SELL ITEM</h3>
@@ -83,11 +83,9 @@ function AdForm(props) {
                         onChange={props.onChange}
                     />
 
-                    {!props.editMode ?
-                        <Button variant="contained" color="primary" type="submit">Add</Button> :
-                        <Button variant="contained" type="submit">
-                            Update
-                    </Button>}
+                    {!props.editMode
+                        ? <Button variant="contained" color="primary" type="submit">Add</Button>
+                        : <Button variant="contained" type="submit">Update</Button>}
                 </Grid>
             </form>
     )

@@ -7,7 +7,8 @@
 
 .search-container {
   margin-top: 64px !important;
-  background: url('https://www.fujifilmusa.com/products/instax/img/index/pic_09.jpg') no-repeat center; 
+  background: url('https://www.fujifilmusa.com/products/instax/img/index/pic_09.jpg')
+    no-repeat center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -16,7 +17,7 @@
   color: white;
 }
 
-.search-container .MuiGrid-item{
+.search-container .MuiGrid-item {
   text-align: center !important;
   color: #373434 !important;
 }
@@ -36,7 +37,7 @@
 }
 
 .img-detail {
-  height: 300px
+  height: 300px;
 }
 
 .ad-details {
@@ -52,7 +53,7 @@
 }
 
 .info {
-  margin-left: 30px !important
+  margin-left: 30px !important;
 }
 
 .bid {
@@ -64,4 +65,8 @@
   font-weight: bold !important;
   margin-top: 8px !important;
   height: 40px !important;
+}
+
+.error-msg {
+  color: red;
 }
