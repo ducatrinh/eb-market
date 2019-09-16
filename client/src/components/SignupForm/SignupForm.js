@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import '../../assets/boxes.css'
 
 export default function SignupForm(props) {
     return (
@@ -46,19 +45,19 @@ export default function SignupForm(props) {
                         onChange={props.onChange}
                     />
 
+                    <Grid item>
+                        {props.user.url && props.user.url.includes('api/user') &&
+                            <p className="error-msg">{props.user.message}</p>}
+                    </Grid>
+
                     <Grid item xs={12}>
                         <Button type="submit" variant="contained" color="primary">
                             Create
-                    </Button>
+                        </Button>
                     </Grid>
 
                     <Grid item>
-                        {props.user.url && props.user.url.includes('api/user') &&
-                            <p>{props.user.message}</p>}
-                    </Grid>
-
-                    <Grid item>
-                        {props.user.id && <p>User created successfully! You can <Link to="login">login here</Link></p>}
+                        {props.user.id && <p>User account is created successfully! You can <Link to="login">login here</Link></p>}
                     </Grid>
                 </Grid>
             </form>

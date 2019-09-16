@@ -4,10 +4,9 @@ import { connect } from 'react-redux'
 import { login } from '../../actions/users'
 
 class LoginFormContainer extends React.Component {
-    state = { 
-        email: '', 
-        password: '',
-        signupMode: false
+    state = {
+        email: '',
+        password: ''
     }
 
     onSubmit = (event) => {
@@ -18,12 +17,6 @@ class LoginFormContainer extends React.Component {
     onChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
-        })
-    }
-
-    onClick = () => {
-        this.setState({
-            signupMode: true
         })
     }
 
