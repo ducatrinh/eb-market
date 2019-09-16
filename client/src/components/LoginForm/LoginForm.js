@@ -38,31 +38,6 @@ export default function LoginForm(props) {
                         value={props.values.password}
                         onChange={props.onChange}
                     />
-                    {/* <Grid item xs={12}> 
-                        <FormControl fullWidth>
-                            <InputLabel htmlFor="email">Email</InputLabel>
-                            <Input
-                                id="email"
-                                type="text"
-                                name="email"
-                                value={props.values.email}
-                                onChange={props.onChange}
-                            />
-                        </FormControl>
-                    </Grid>
-
-                    <Grid item xs={12}>
-                        <FormControl fullWidth>
-                            <InputLabel htmlFor="password">Password</InputLabel>
-                            <Input
-                                id="password"
-                                type="password"
-                                name="password"
-                                value={props.values.password}
-                                onChange={props.onChange}
-                            />
-                        </FormControl>
-                    </Grid> */}
 
                     <Grid item xs={12}>
                         <Button type="submit" variant="contained" color="primary">
