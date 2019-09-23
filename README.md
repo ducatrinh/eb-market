@@ -23,12 +23,12 @@ A full-stack app that allows users to post advertisements to sell items.
 ## Installation
 
 - Make sure you installed [Node.js](https://nodejs.org/en/download/) on your development machine.
-- Create a [Docker](https://www.docker.com) container to store your [PostgreSQL](https://www.postgresql.org) database. You can update the database configuration in the db.js file. Create your local database by running
+- Create a [Docker](https://www.docker.com) container to store your [PostgreSQL](https://www.postgresql.org) database. You can update the database configuration in the *db.js* file. Create your local database by running
 
 ```
 > docker run -p 5432:5432 --name <name_of_your_database> -e POSTGRES_PASSWORD=<your_password> -d postgres
 ```
-
+- Replace the baseUrl value with your local database url in */client/src/actions/ads.js* and */client/src/actions/users.js* files with: *http://localhost:4000*
 - In the terminal, run
 
 ```
